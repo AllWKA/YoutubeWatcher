@@ -4,11 +4,12 @@
   "description": "watch your the subs videos you didnt watch",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "cd ./app && ng build --output-path dist --base-href . && cd ../ && nodemon --exec 'electron .'"
   },
   "author": "allwka",
   "license": "ISC",
   "dependencies": {
+    "nodemon": "^2.0.2",
     "typescript": "^3.7.5"
   },
   "devDependencies": {
