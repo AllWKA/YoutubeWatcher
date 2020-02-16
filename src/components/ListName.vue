@@ -1,14 +1,7 @@
 <template>
-  <ul>
-    <li>
-      <h3>{{ getName }}</h3>
-    </li>
-    <li>
-      <ul>
-        <li>{{ path }}</li>
-      </ul>
-    </li>
-  </ul>
+ <div class="flex">
+   <h3>{{ getName }}</h3>
+ </div>
 </template>
 
 <script>
@@ -19,10 +12,17 @@ export default {
   },
   computed: {
     getName() {
-      return this.path.substring(this.path.indexOf("/"), this.path.length);
+      return this.path.substring(this.path.lastIndexOf("/")+1, this.path.length);
     }
   }
 };
 </script>
 
-<style></style>
+<style scoped>
+.flex{
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  color: white;
+}
+</style>

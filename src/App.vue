@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <ListName></ListName>
+    <ListName path="/Users/bryanjaramillobaldeon/Desktop"></ListName>
   </div>
 </template>
 
 <script>
-const { Folder } = require("./classes/Folder");
-const ListName = require("./components/ListName");
+// const { Folder } = require("./classes/Folder");
+import ListName from "./components/ListName";
 export default {
   components: {
     ListName
@@ -15,8 +15,8 @@ export default {
     return {};
   },
   mounted() {
-    const resource = new Folder("/Users/allwka/Desktop/anime");
-    console.log(resource);
+    // const resource = new Folder("/Users/allwka/Desktop/anime");
+    // console.log(resource);
   }
 };
 </script>
@@ -30,16 +30,9 @@ export default {
   color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
-}
-
 #nav a {
   font-weight: bold;
   color: #2c3e50;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>
