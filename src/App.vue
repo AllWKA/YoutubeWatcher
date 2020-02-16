@@ -1,12 +1,25 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <ListName></ListName>
   </div>
 </template>
+
+<script>
+const { Folder } = require("./classes/Folder");
+const ListName = require("./components/ListName");
+export default {
+  components: {
+    ListName
+  },
+  data() {
+    return {};
+  },
+  mounted() {
+    const resource = new Folder("/Users/allwka/Desktop/anime");
+    console.log(resource);
+  }
+};
+</script>
 
 <style>
 #app {
