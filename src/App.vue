@@ -1,22 +1,28 @@
 <template>
   <div id="app">
-    <ListName path="/Users/bryanjaramillobaldeon/Desktop"></ListName>
+    <List
+        :folder="items"
+        :title-list="folderPath.substring(folderPath.lastIndexOf('/')+1, folderPath.length)"></List>
   </div>
 </template>
 
 <script>
-// const { Folder } = require("./classes/Folder");
-import ListName from "./components/ListName";
+const {Folder} = require("./classes/Folder");
+import List from "./components/List";
+
 export default {
   components: {
-    ListName
+    List
   },
   data() {
-    return {};
+    return {
+      items: [],
+      folderPath: "/Users/bryanjaramillobaldeon/Documents/my_projects/YoutubeWatcher/src/folderExample/series"
+    };
   },
   mounted() {
-    // const resource = new Folder("/Users/allwka/Desktop/anime");
-    // console.log(resource);
+    const resource = new Folder(this.folderPath);
+    this.items = [resource.getContent()];
   }
 };
 </script>
