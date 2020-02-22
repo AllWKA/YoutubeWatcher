@@ -8,17 +8,27 @@
         item-key="name"
         open-on-click
         expand-icon=""
+        style="text-align: left"
     >
-      <template v-slot:append>
+      <template v-slot:label="{ item, open }">
+        <div v-if="item.type==='folder'">
+          <v-icon v-if="!item.file">
+            {{ open ? 'keyboard_arrow_down' : 'keyboard_arrow_right' }}
+          </v-icon>
+          <v-icon v-if="!item.file">
+            {{ open ? 'folder_open' : 'folder' }}
+          </v-icon>
+          {{item.name}}
+        </div>
+        <div v-else>
+          <v-icon>
+            music_video
+          </v-icon>
+          {{item.name}}
+        </div>
 
       </template>
-      <template v-slot:label="{ item, leaf, selected, indeterminate, active, open }">
-        {{item.name}}
-        {{leaf}}
-        {{selected}}
-        {{indeterminate}}
-        {{active}}
-        {{open }}
+      <template v-slot:append>
       </template>
       <template v-slot:append></template>
     </v-treeview>

@@ -3,7 +3,8 @@ const fs = require("fs");
 export class Folder {
   children = {
     name: "",
-    children: []
+    children: [],
+    type: "folder"
   };
 
   constructor(path) {
