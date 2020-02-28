@@ -2,8 +2,7 @@
 
 import { app, protocol, BrowserWindow } from "electron";
 import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
-
-import api from './api/index';
+import api from './api/index'
 
 const isDevelopment = process.env.NODE_ENV !== "production";
 // Keep a global reference of the window object, if you don't, the window will

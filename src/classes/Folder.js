@@ -1,19 +1,19 @@
 const fs = require("fs");
 
-export class Folder {
-  children = {
-    name: "",
-    children: [],
-    type: "folder"
-  };
+let children = {
+  name: "",
+  children: [],
+  type: "folder"
+};
 
+export class Folder {
   constructor(path) {
     const resource = fs.lstatSync(path);
     if (resource.isDirectory()) {
       const folder = fs.readdirSync(path);
-      this.children.children = this.getFolderContent(folder, path);
-      this.children.name = path;
-      this.children.id = 0;
+      children.children = this.getFolderContent(folder, path);
+      children.name = path;
+      children.id = 0;
     }
   }
 
@@ -45,5 +45,4 @@ export class Folder {
   getContent() {
     return this.children;
   }
-
 }

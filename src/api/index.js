@@ -1,5 +1,8 @@
 let express = require("express");
 let app = express();
+
+const {Folder} = require('../classes/Folder');
+
 app.get("/", function(req, res) {
   res.send("Hello world! Lala Seth is here!");
 });
