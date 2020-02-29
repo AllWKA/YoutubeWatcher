@@ -1,12 +1,12 @@
 <template>
   <div id="app">
     <button @click="openFolder"></button>
-    <List
-        :folder="items"
-        :title-list="folderPath.substring(folderPath.lastIndexOf('/')+1, folderPath.length)"></List>
-    <Player
-        :video-list="items"></Player>
-    <MenuSettings></MenuSettings>
+        <List
+            :folder="items"
+            :title-list="folderPath.substring(folderPath.lastIndexOf('/')+1, folderPath.length)"></List>
+        <Player
+            :video-list="items"></Player>
+        <MenuSettings></MenuSettings>
   </div>
 </template>
 
