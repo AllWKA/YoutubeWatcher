@@ -1,4 +1,4 @@
-# rng-watcher
+# allwka_watcher
 
 ## Project setup
 ```

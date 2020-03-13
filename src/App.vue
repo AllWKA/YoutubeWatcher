@@ -1,53 +1,24 @@
 <template>
   <div id="app">
-    <button @click="openFolder"></button>
-        <List
-            :folder="items"
-            :title-list="folderPath.substring(folderPath.lastIndexOf('/')+1, folderPath.length)"></List>
-        <Player
-            :video-list="items"></Player>
-        <MenuSettings></MenuSettings>
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+    </div>
+    <router-view/>
   </div>
 </template>
 
-<script>
-const {Folder} = require("./classes/Folder");
-import List from "./components/List";
-import Player from "./components/Player";
-import MenuSettings from "./components/MenuSettings";
-
-const {dialog} = require("electron");
-
-export default {
-  components: {
-    List,
-    Player,
-    MenuSettings
-  },
-  data() {
-    return {
-      items: [],
-      folderPath: "/Users/bryanjaramillobaldeon/Documents/my_projects/YoutubeWatcher/src/folderExample/series"
-    };
-  },
-  mounted() {
-    const resource = new Folder(this.folderPath);
-    this.items = [resource.getContent()];
-  },
-  methods: {
-    openFolder() {
-      dialog.showOpenDialog({properties: ["openDirectory"]}, (res => {
-        console.log(res);
-      }));
-    }
-  }
-};
-</script>
-
 <style>
 #app {
-  display: flex;
-  flex-direction: column;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+
+#nav {
+  padding: 30px;
 }
 
 #nav a {
@@ -55,4 +26,7 @@ export default {
   color: #2c3e50;
 }
 
+#nav a.router-link-exact-active {
+  color: #42b983;
+}
 </style>
