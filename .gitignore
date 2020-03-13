@@ -20,3 +20,7 @@ yarn.lock
 *.njsproj
 *.sln
 *.sw?
+
+#Electron-builder output
+dist_electron
+dist
