@@ -11,8 +11,8 @@ export default new Vuex.Store({
     folders: []
   },
   mutations: {
-    addFolder() {
-      this.state.folders.push({for: 5});
+    addFolder(state, newFolder) {
+      state.folders.push(newFolder);
       writeFileSync(electronStoragePath, JSON.stringify(this.state));
     }
   },
