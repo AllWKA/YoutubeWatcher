@@ -1,19 +1,20 @@
-const fs = require("fs");
+import { lstatSync, readdirSync } from "fs";
 
-let children = {
-  name: "",
-  children: [],
-  type: "folder"
-};
 
 export class Folder {
+  children = {
+    name: "",
+    children: [],
+    type: "folder"
+  };
+
   constructor(path) {
-    const resource = fs.lstatSync(path);
+    const resource = lstatSync(path);
     if (resource.isDirectory()) {
-      const folder = fs.readdirSync(path);
-      children.children = this.getFolderContent(folder, path);
-      children.name = path;
-      children.id = 0;
+      const folder = readdirSync(path);
+      this.children.children = this.getFolderContent(folder, path);
+      this.children.name = path;
+      this.children.id = 0;
     }
   }
 
@@ -30,8 +31,8 @@ export class Folder {
         name: childrenInFolder,
         id: i
       };
-      if (fs.lstatSync(childrenInFolderPath).isDirectory()) {
-        const folder = fs.readdirSync(childrenInFolderPath);
+      if (lstatSync(childrenInFolderPath).isDirectory()) {
+        const folder = readdirSync(childrenInFolderPath);
         child.children = this.getFolderContent(folder, childrenInFolderPath);
         child.type = "folder";
       } else {
