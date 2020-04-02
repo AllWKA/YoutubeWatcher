@@ -13,11 +13,10 @@ export default new Vuex.Store({
   mutations: {
     addFolder(state, newFolder) {
       const repeatedFolder = state.folders.filter(folder => folder.path === newFolder.path);
-      console.log(repeatedFolder);
       if (repeatedFolder.length !== 0) {
         return;
       }
-      state.folders.push(newFolder);
+      state.folders.push(newFolder.children);
       writeFileSync(electronStoragePath, JSON.stringify(this.state));
     }
   },
