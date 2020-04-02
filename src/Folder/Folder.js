@@ -1,6 +1,5 @@
 import { lstatSync, readdirSync } from "fs";
 
-
 export class Folder {
   children = {
     name: "",
@@ -37,6 +36,7 @@ export class Folder {
         child.type = "folder";
       } else {
         child.type = "file";
+        child.time = 0;
       }
       children.push(child);
     });
