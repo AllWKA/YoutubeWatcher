@@ -24,7 +24,8 @@ export class Folder {
         //ignore stupid shit file of mac
         return;
       }
-      const childrenInFolderPath = path + "/" + childrenInFolder;
+      //TODO use path library to concat paths
+      const childrenInFolderPath = path + "\\" + childrenInFolder;
       const child = {
         path: childrenInFolderPath,
         name: childrenInFolder,
