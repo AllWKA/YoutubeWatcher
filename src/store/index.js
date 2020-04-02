@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import { writeFileSync } from "fs";
+import {writeFileSync} from "fs";
 
 Vue.use(Vuex);
 
@@ -12,6 +12,11 @@ export default new Vuex.Store({
   },
   mutations: {
     addFolder(state, newFolder) {
+      const repeatedFolder = state.folders.filter(folder => folder.path === newFolder.path);
+      console.log(repeatedFolder);
+      if (repeatedFolder.length !== 0) {
+        return;
+      }
       state.folders.push(newFolder);
       writeFileSync(electronStoragePath, JSON.stringify(this.state));
     }
