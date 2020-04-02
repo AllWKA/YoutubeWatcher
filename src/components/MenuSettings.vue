@@ -1,12 +1,12 @@
 <template>
   <div>
-    <input type="button" value="Choose a file" id="select-file" @click="saveNewFolder"/>
+    <input type="button" value="Choose Folder" id="select-file" @click="saveNewFolder"/>
   </div>
 </template>
 
 <script>
 const {dialog} = require("electron").remote;
-import { Folder } from "../Folder/Folder";
+import {Folder} from "../Folder/Folder";
 
 export default {
   name: "MenuSettings",
