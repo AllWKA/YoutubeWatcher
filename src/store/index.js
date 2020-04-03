@@ -8,6 +8,7 @@ Vue.use(Vuex);
 const electronStoragePath = "./src/store/electronStorage.json";
 export default new Vuex.Store({
   state: {
+    actualVideo:{},
     folders: []
   },
   mutations: {
@@ -18,8 +19,19 @@ export default new Vuex.Store({
       }
       state.folders.push(newFolder.children);
       writeFileSync(electronStoragePath, JSON.stringify(this.state));
+    },
+    changeVideo(state, video){
+      state.actualVideo = video;
+      writeFileSync(electronStoragePath, JSON.stringify(this.state));
     }
   },
   actions: {},
-  modules: {}
+  getters: {
+    allFolders(state){
+      return state.folders;
+    },
+    actualVideo(state){
+      return state.actualVideo;
+    }
+  }
 });
