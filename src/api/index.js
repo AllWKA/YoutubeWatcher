@@ -1,18 +1,12 @@
 const app = require('express')();
 const fs = require('fs');
-const {getContent} = require('../Services/SotoreJsonService');
-
-app.get('/', function (req, res) {
-  res.send(JSON.stringify(getContent()));
-});
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
 });
 
 app.get('/video', function (req, res) {
-  const path = getContent().folders[0].children[0].children[0].children[0].path;
-  console.log('content: ',path);
+  const path = req.query.path;
   const stat = fs.statSync(path);
   const fileSize = stat.size;
   const range = req.headers.range;
