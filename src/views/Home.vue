@@ -1,18 +1,42 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div>
+      <MenuSettings></MenuSettings>
+      <List :folder="allFolders" @requestedVideo="playRequestedVideo"></List>
+    </div>
+    <div>
+      <Player :video="actualVideo"></Player>
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import MenuSettings from '../components/MenuSettings';
+import Player from '../components/Player';
+import List from '../components/List';
+import {mapGetters} from 'vuex';
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld
+    MenuSettings,
+    Player,
+    List
+  },
+  computed: mapGetters(['allFolders', 'actualVideo']),
+  methods:{
+    playRequestedVideo(video){
+      this.$store.commit('changeVideo', video)
+    }
+  },
+  mounted() {
   }
-}
+};
 </script>
+
+<style scoped>
+.home {
+  display: grid;
+  grid-template-columns: auto 50%;
+}
+</style>
