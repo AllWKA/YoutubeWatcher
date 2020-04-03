@@ -13,18 +13,17 @@
       <template v-slot:label="{ item, open }">
         <div v-if="item.type==='folder'">
           <v-icon v-if="!item.file">
-            {{ open ? 'keyboard_arrow_down' : 'keyboard_arrow_right' }}
+            {{ open ? 'mdi-arrow-down-drop-circle' : 'mdi-arrow-right-drop-circle' }}
           </v-icon>
           <v-icon v-if="!item.file">
-            {{ open ? 'folder_open' : 'folder' }}
+            {{ open ? 'mdi-folder-open' : 'mdi-folder' }}
           </v-icon>
           {{item.name}}
         </div>
         <div v-else>
-          <v-icon>
-            music_video
-          </v-icon>
+          <v-icon>mdi-movie-open</v-icon>
           {{item.name}}
+          <v-icon @click="sendRequestedVideo(item)">mdi-play-circle-outline</v-icon>
         </div>
 
       </template>
@@ -43,6 +42,11 @@ export default {
       tree: [],
       items: []
     };
+  },
+  methods:{
+    sendRequestedVideo(video){
+      this.$emit('requestedVideo', video);
+    }
   },
   props: {
     folder: Array,
