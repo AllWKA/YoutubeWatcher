@@ -37,6 +37,6 @@ export default {
 <style scoped>
 .home {
   display: grid;
-  grid-template-columns: auto 50%;
+  grid-template-columns: auto auto;
 }
 </style>
